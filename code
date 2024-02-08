@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+long long maxi = -1, fr[255],  i, vocmax;
+char c[255], voc[]="aeiouAEIOU";
+
+int main()
+{
+    cin.getline(c, 256);
+    
+    for(i = 0; i <= strlen(c); i++)
+    {
+        if(strchr(voc, c[i]))
+        {
+            c[i] = tolower(c[i]);
+        	fr[c[i]] ++;
+        }
+    }
+    
+    for(i = 0; i <= strlen(c); i++)
+    {
+        if(maxi < fr[c[i]])
+        {
+            maxi = fr[c[i]];
+            vocmax = c[i];
+        }
+        else if(maxi == fr[c[i]])
+        {
+            if(int(tolower(vocmax)) > int(tolower(vocmax)))
+            {
+                vocmax = c[i];
+            }
+        }
+    }
+    
+    if(int(vocmax) >= 97 and int(vocmax) <= 122)
+    {
+        cout << char(vocmax - 32);
+    }
+    else if(int(vocmax) >= 65 and int(vocmax) <= 90)
+    {
+        cout << char(vocmax);
+    }
+    
+    return 0;
+}
